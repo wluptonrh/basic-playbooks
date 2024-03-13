@@ -1,0 +1,10 @@
+---
+ - name: Change message of the day
+   hosts: all
+   become: yes
+   
+   tasks:
+     - name: Update motd file
+       copy:
+          content: "{{ custom_message }}"
+          dest: /etc/motd
