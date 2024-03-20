@@ -11,6 +11,7 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
+        datacenter: SDDC-Datacenter
         folder: /sandbox-2dqmq
         name: test
         state: poweredon
