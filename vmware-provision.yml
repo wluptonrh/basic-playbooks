@@ -13,41 +13,14 @@
         password: "{{ vcenter_password }}"
         datacenter: SDDC-Datacenter
         folder: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq
-        name: test
+        name: "{{ vm_name }}"
         state: poweredon
         template: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq/rhel9-tmp
         disk:
-        - size_gb: 16
+        - size_gb: "{{ disk_gb }}"
           datastore: WorkloadDatastore
-        # Add another disk from an existing VMDK
-        #- filename: "[datastore1] testvms/testvm_2_1/testvm_2_1.vmdk"
         hardware:
           memory_mb: 512
           num_cpus: 2
-        #num_cpu_cores_per_socket: 3
-        # scsi: paravirtual
-        # memory_reservation_lock: true
-        # mem_limit: 8096
-        # mem_reservation: 4096
-        # cpu_shares_level: "high"
-        # mem_shares_level: "high"
-        # cpu_limit: 8096
-        # cpu_reservation: 4096
-        # max_connections: 5
-        # hotadd_cpu: true
-        # hotremove_cpu: true
-        # hotadd_memory: false
-        # version: 12 # Hardware version of virtual machine
-        # boot_firmware: "efi"
-        # cdrom:
-        #     - controller_number: 0
-        #       unit_number: 0
-        #       state: present
-        #       type: iso
-        #       iso_path: "[datastore1] livecd.iso"
-        # networks:
-        # - name: VM Network
-        #   mac: aa:bb:dd:aa:00:14
-        #wait_for_ip_address: true
       delegate_to: localhost
       register: deploy
