@@ -48,5 +48,5 @@
         # - name: VM Network
         #   mac: aa:bb:dd:aa:00:14
         #wait_for_ip_address: true
-        delegate_to: localhost
-        register: deploy
+      delegate_to: localhost
+      register: deploy
