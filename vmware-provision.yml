@@ -17,10 +17,10 @@
         state: poweredon
         template: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq/rhel9-tmp
         disk:
-        - size_gb: "{{ disk_gb }}"
+        - size_gb: "{{ disk_gb | int }}"
           datastore: WorkloadDatastore
         hardware:
-          memory_mb: 512
-          num_cpus: 2
+          memory_mb: "{{ mem_gb * 1000 | int }}"
+          num_cpus: "{{ cpu_count | int }}"
       delegate_to: localhost
       register: deploy
