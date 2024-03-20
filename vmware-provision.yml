@@ -17,7 +17,7 @@
         state: poweredon
         template: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq/rhel9-tmp
         disk:
-        - size_gb: 13
+        - size_gb: 16
           datastore: WorkloadDatastore
         # Add another disk from an existing VMDK
         #- filename: "[datastore1] testvms/testvm_2_1/testvm_2_1.vmdk"
