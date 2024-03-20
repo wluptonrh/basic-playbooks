@@ -15,7 +15,7 @@
         folder: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq
         name: test
         state: poweredon
-        template: /sandbox-2dqmq/rhel9-tmp
+        template: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq/rhel9-tmp
         disk:
         - size_gb: 13
           datastore: WorkloadDatastore
