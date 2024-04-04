@@ -4,15 +4,10 @@
   hosts: localhost
   tasks:
     - name: Create or terminate a VirtualMachine
-      loop:
-        - eap1
-        - eap2
       kubevirt.core.kubevirt_vm:
-        state: "{{ infra_action }}"
-        name: "{{ item }}"
+        state: running
+        name: test
         namespace: kubevirt
-        labels:
-          app: eap
         wait: yes
         wait_timeout: 600
         spec:
