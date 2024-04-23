@@ -16,6 +16,7 @@
               app: "{{ vm_name }}"
               os.template.kubevirt.io/fedora36: 'true'
               vm.kubevirt.io/name: "{{ vm_name }}"
+              env: webapp
           spec:
             dataVolumeTemplates:
               - apiVersion: cdi.kubevirt.io/v1beta1
