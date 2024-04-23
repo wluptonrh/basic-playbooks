@@ -13,7 +13,14 @@
      ansible.builtin.dnf:
        name: firewalld
        state: present
-       
+
+   - name: Start firewalld
+     ansible.builtin.service:
+       name: firewalld
+       state: started
+       enabled: true
+     check_mode: false
+  
    - name: Permit traffic in default zone for http service
      ansible.builtin.firewalld:
        service: http
