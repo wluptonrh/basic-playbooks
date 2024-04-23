@@ -1,0 +1,12 @@
+---
+ - name: Register newly provisioned system
+   hosts: "{{ _hosts }}"
+   become: true
+   
+   tasks:
+      - name: Register and subscription
+        redhat_subscription:
+          state: present
+          activationkey: "{{ rh_subscription_key }}"
+          org_id: "{{ rh_subscription_org }}"
+          pool: '^(Red Hat Enterprise Server|Red Hat Virtualization)$'
