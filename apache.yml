@@ -8,6 +8,11 @@
      ansible.builtin.dnf:
        name: httpd
        state: present
+
+   - name: Install firewalld
+     ansible.builtin.dnf:
+       name: firewalld
+       state: present
        
    - name: Permit traffic in default zone for http service
      ansible.builtin.firewalld:
