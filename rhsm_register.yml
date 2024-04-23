@@ -7,6 +7,5 @@
       - name: Register and subscription
         redhat_subscription:
           state: present
-          activationkey: "{{ rh_subscription_key }}"
-          org_id: "{{ rh_subscription_org }}"
-          pool: '^(Red Hat Enterprise Server|Red Hat Virtualization)$'
+          username: "{{ rhsm_username }}"
+          password: "{{ rhsm_password }}"
