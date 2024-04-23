@@ -1,23 +1,24 @@
 ---
 - name: Install and start apache
   hosts: all
-  #become: ye
+  become: yes
   tasks:
+  
    - name: Install apache
      ansible.builtin.dnf:
        name: httpd
        state: present
-
-    - name: Permit traffic in default zone for http service
-      ansible.posix.firewalld:
-        service: http
-        permanent: true
-        state: enabled
-        immediate: true
-      check_mode: false
-
-    - name: Start apache
-      ansible.builtin.service:
-        name: httpd
-        state: started
-      check_mode: false
+       
+   - name: Permit traffic in default zone for http service
+     ansible.posix.firewalld:
+       service: http
+       permanent: true
+       state: enabled
+       immediate: true
+     check_mode: false
+     
+   - name: Start apache
+     ansible.builtin.service:
+       name: httpd
+       state: started
+     check_mode: false
