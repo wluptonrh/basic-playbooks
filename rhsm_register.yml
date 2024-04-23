@@ -1,6 +1,6 @@
 ---
  - name: Register newly provisioned system
-   hosts: "{{ _hosts }}"
+   hosts: all
    become: true
    
    tasks:
