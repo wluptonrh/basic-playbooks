@@ -10,7 +10,7 @@
        state: present
        
    - name: Permit traffic in default zone for http service
-     ansible.posix.firewalld:
+     ansible.builtin.firewalld:
        service: http
        permanent: true
        state: enabled
