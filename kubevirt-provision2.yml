@@ -39,11 +39,11 @@
                   vm.kubevirt.io/flavor: small
                   vm.kubevirt.io/os: "{{ os_version }}"
                   vm.kubevirt.io/workload: server
-                  env: webapp
                 creationTimestamp: null
                 labels:
                   kubevirt.io/domain: "{{ vm_name }}"
                   kubevirt.io/size: small
+                  env: webapp
               spec:
                 domain:
                   cpu:
