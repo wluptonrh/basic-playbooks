@@ -8,9 +8,10 @@
         name: webapp
         namespace: openshift-cnv
         inline:
-          spec:
-            ports:
-            - port: 443
-              protocol: TCP
-            selector:
-              key: special
+           spec:
+             selector:
+               env: webapp
+             ports:
+               - protocol: TCP
+                 port: 80
+                 targetPort: 80
