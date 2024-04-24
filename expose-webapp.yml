@@ -23,6 +23,20 @@
       kubernetes.core.k8s:
         state: present
         definition: 
+          kind: Route
+          apiVersion: route.openshift.io/v1
+          metadata:
+            name: test
+            namespace: openshift-cnv
+            labels: {}
+          spec:
+            to:
+              kind: Service
+              name: webapp
+            tls: null
+            port:
+              targetPort: 80
+
           
 
     - name: Create webapp Route
