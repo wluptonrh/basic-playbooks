@@ -2,16 +2,28 @@
   hosts: all
 
   tasks:
-    - name: Expose https port with ClusterIP using spec
-      kubernetes.core.k8s_service:
+    - name: Create webapp service
+      kubernetes.core.k8s:
         state: present
-        name: webapp
-        namespace: openshift-cnv
-        inline:
-           spec:
-             selector:
-               env: webapp
-             ports:
-               - protocol: TCP
-                 port: 80
-                 targetPort: 80
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: webapp
+            namespace: openshift-cnv
+          spec:
+            selector:
+              env: webapp
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: 80
+
+    - name: Create webapp route
+      kubernetes.core.k8s:
+        state: present
+        definition: 
+          
+
+    - name: Create webapp Route
+      
