@@ -1,4 +1,4 @@
-- name: Create Service and Route for webserver
+- name: Create Service and Route for our Apache Webserver
   hosts: all
 
   tasks:
