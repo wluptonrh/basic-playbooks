@@ -88,9 +88,6 @@
                         ssh_pwauth: True
                         ssh_authorized_keys:
                             - "{{ ssh_authorized_key }}"
-                        # rh_subscription:
-                        #   activation-key: "{{ rh_subscription_key }}"
-                        #   org: "{{ rh_subscription_org }}"
 
   # Normally we could wait for SSH to be up and running, however,
   # we don't know the IP address (or have name resolution) of the VM
