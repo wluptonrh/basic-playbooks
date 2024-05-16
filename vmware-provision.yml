@@ -12,7 +12,7 @@
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
         datacenter: SDDC-Datacenter
-        folder: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq
+        folder: /SDDC-Datacenter/vm/Workloads/sandbox-kqdl6
         name: "{{ vm_name }}"
         state: poweredon
         template: /SDDC-Datacenter/vm/Workloads/sandbox-kqdl6/rhel9-tmp
