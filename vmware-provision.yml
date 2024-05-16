@@ -15,10 +15,10 @@
         folder: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq
         name: "{{ vm_name }}"
         state: poweredon
-        template: /SDDC-Datacenter/vm/Workloads/sandbox-2dqmq/rhel9-tmp
+        template: /SDDC-Datacenter/vm/Workloads/sandbox-kqdl6/rhel9-tmp
         disk:
         - size_gb: "{{ disk_gb | int }}"
-          datastore: WorkloadDatastore
+          datastore: "{{ datastore }}"
         hardware:
           memory_mb: "{{ mem_gb * 1000 | int }}"
           num_cpus: "{{ cpu_count | int }}"
