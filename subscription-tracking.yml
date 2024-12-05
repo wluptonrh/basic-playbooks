@@ -1,0 +1,43 @@
+---
+- name: Register and Tag RHEL Systems for Subscription Tracking
+  hosts: all
+  become: yes
+
+  vars:
+    #org_id: "<org-id>"                # Replace with your organization ID
+    #activation_key: "<activation-key>" # Replace with your activation key
+    tags_content: |
+      group: "{{ system_group }}""
+      contract: "{{ contract_num }}"
+      subscription: "{{ entitlement }}
+      serviceLevel: "{{ service_level }}"
+
+  tasks:
+    - name: Register system with Red Hat Subscription Manager
+      command: >
+        subscription-manager register
+        --org={{ org_id }}
+        --activationkey={{ activation_key }}
+      register: subscription_manager_output
+      ignore_errors: yes
+      changed_when: "'Registered' in subscription_manager_output.stdout"
+
+    - name: Install the insights-client package
+      dnf:
+        name: insights-client
+        state: present
+
+    - name: Register the system with Red Hat Insights
+      command: insights-client --register
+      register: insights_register_output
+      changed_when: "'success' in insights_register_output.stdout"
+
+    - name: Create or update tags.yaml for Insights
+      copy:
+        dest: /etc/insights-client/tags.yaml
+        content: "{{ tags_content }}"
+
+    - name: Refresh insights-client the system with updated tags
+      command: insights-client --register
+      register: insights_reregister_output
+      changed_when: "'success' in insights_reregister_output.stdout"
