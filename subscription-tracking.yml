@@ -1,5 +1,6 @@
 ---
 - name: Register and Tag RHEL Systems for Subscription Tracking
+  hosts: all
   become: yes
 
   vars:
