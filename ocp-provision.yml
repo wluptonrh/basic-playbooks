@@ -99,6 +99,3 @@
         wait: true
         wait_timeout: 240
     
-    - name: Wait 5 seconds to install because anything else is hard
-      ansible.builtin.pause:
-        seconds: 5
