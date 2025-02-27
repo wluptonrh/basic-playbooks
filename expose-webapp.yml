@@ -37,7 +37,3 @@
             port:
               targetPort: 80
 
-          
-
-    - name: Create webapp Route
-      
