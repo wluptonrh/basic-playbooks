@@ -1,0 +1,25 @@
+---
+- name: Remove Kubernetes resources with label env=webapp
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Remove Kubernetes services with label env=webapp
+      k8s:
+        state: absent
+        api_version: v1
+        kind: Service
+        label_selector: "env=webapp"
+
+    - name: Remove Kubernetes routes with label env=webapp
+      k8s:
+        state: absent
+        api_version: route.openshift.io/v1
+        kind: Route
+        label_selector: "env=webapp"
+
+    - name: Remove Kubernetes VirtualMachineInstance with label env=webapp
+      k8s:
+        state: absent
+        api_version: kubevirt.io/v1
+        kind: VirtualMachineInstance
+        label_selector: "env=webapp"
