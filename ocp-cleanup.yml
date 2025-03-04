@@ -8,7 +8,7 @@
         state: absent
         api_version: v1
         kind: Service
-        label_selector: "purpose=demo"
+        label_selectors: "purpose=demo"
         namespace: openshift-cnv
 
     - name: Remove Kubernetes routes with label env=webapp
@@ -16,7 +16,7 @@
         state: absent
         api_version: route.openshift.io/v1
         kind: Route
-        label_selector: "purpose=demo"
+        label_selectors: "purpose=demo"
         namespace: openshift-cnv
 
 
@@ -25,6 +25,6 @@
         state: absent
         api_version: kubevirt.io/v1
         kind: VirtualMachineInstance
-        label_selector: "purpose=demo"
+        label_selectors: "purpose=demo"
         namespace: openshift-cnv
 
