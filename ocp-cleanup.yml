@@ -11,7 +11,7 @@
         kind: Service
         label_selectors:
            - pupose = demo
-        register: k8s_result
+      register: k8s_result
 
     - debug:
         msg: "{{ k8s_result }}"
