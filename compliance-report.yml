@@ -13,7 +13,7 @@
 
   tasks:
   
-    - name: Register and subscription
+    - name: Register and subscribe RHEL system 
       redhat_subscription:
         state: present
         activationkey: "{{ rh_ak }}"
