@@ -12,7 +12,7 @@
             name: webapp
             namespace: openshift-cnv
             labels:
-              pupose: demo
+              purpose: demo
           spec:
             selector:
               env: webapp
