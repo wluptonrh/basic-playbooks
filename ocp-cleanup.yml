@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
     - name: Remove Kubernetes services with label env=webapp
-      k8s:
+      kubernetes.core.k8s:
         state: absent
         api_version: v1
         kind: Service
@@ -12,7 +12,7 @@
         namespace: openshift-cnv
 
     - name: Remove Kubernetes routes with label env=webapp
-      k8s:
+      kubernetes.core.k8s:
         state: absent
         api_version: route.openshift.io/v1
         kind: Route
@@ -21,7 +21,7 @@
 
 
     - name: Remove Kubernetes VirtualMachineInstance with label env=webapp
-      k8s:
+      kubernetes.core.k8s:
         state: absent
         api_version: kubevirt.io/v1
         kind: VirtualMachineInstance
