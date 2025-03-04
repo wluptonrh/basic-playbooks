@@ -45,6 +45,7 @@
                   kubevirt.io/domain: "{{ vm_name }}"
                   kubevirt.io/size: small
                   env: webapp
+                  purpose: "{{ vm_purpose | default('demo') }}"
               spec:
                 domain:
                   cpu:
