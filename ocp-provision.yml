@@ -13,6 +13,7 @@
             name: "{{ vm_name }}"
             namespace: "{{ vm_namespace }}"
             labels:
+              purpose: 'demo'
               app: "{{ vm_name }}"
               os.template.kubevirt.io/fedora36: 'true'
               vm.kubevirt.io/name: "{{ vm_name }}"
