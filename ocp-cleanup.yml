@@ -10,7 +10,7 @@
       kubernetes.core.k8s_info:
         kind: Service
         label_selectors:
-           - pupose = demo
+           - purpose = demo
       register: k8s_result
 
     - debug:
