@@ -11,6 +11,8 @@
           metadata:
             name: webapp
             namespace: openshift-cnv
+            labels:
+              pupose: demo
           spec:
             selector:
               env: webapp
@@ -28,7 +30,8 @@
           metadata:
             name: webapp
             namespace: openshift-cnv
-            labels: {}
+            labels:
+              purpose: demo
           spec:
             to:
               kind: Service
