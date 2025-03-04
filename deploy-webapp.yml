@@ -3,7 +3,13 @@
   hosts: openshift-cnv-{{ vm_name }}
   become: true
   tasks:
-
+  
+  - name: Register and subscription
+    redhat_subscription:
+      state: present
+      activationkey: "{{ rh_ak }}"
+      org_id: "{{ rh_org_id }}"
+      
   - name: Install unzip
     ansible.builtin.dnf:
       name: unzip
