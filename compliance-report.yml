@@ -12,6 +12,13 @@
     use_httpd: true
 
   tasks:
+  
+    - name: Register and subscription
+      redhat_subscription:
+        state: present
+        activationkey: "{{ rh_ak }}"
+        org_id: "{{ rh_org_id }}"
+      
     - name: Get our facts straight
       ansible.builtin.set_fact:
         _profile: '{{ compliance_profile | replace("pci_dss", "pci-dss") }}'
