@@ -1,7 +1,7 @@
 
 ---
 - name: Generate OpenSCAP compliance report
-  hosts: '{{ _hosts | default(omit) }}'
+  hosts: openshift-cnv-{{ vm_name }}
   become: true
 
   vars:
@@ -10,7 +10,7 @@
       - openscap-utils
       - scap-security-guide
     compliance_profile: ospp
-    use_httpd: true
+    use_httpd: false
 
   tasks:
   
@@ -71,7 +71,7 @@
     - name: Set report name
       ansible.builtin.set_fact:
         _report: '{{ _report_dir }}/{{ _profile }}/report-{{ ansible_date_time.iso8601 }}.html'
-
+        
     - name: Generate compliance report
       ansible.builtin.command: >-
         oscap xccdf eval --profile {{ _profile }} --report {{ _report }}
@@ -87,6 +87,12 @@
         owner: root
         group: root
         mode: 0644
+
+    - name: Copy report file to report server
+      ansible.posix.synchronize:
+        src: '{{ _report }}'
+        dest: '{{ _report }}'
+      delegate_to: openshift-cnv-report
 
   handlers:
     - name: Restart httpd
