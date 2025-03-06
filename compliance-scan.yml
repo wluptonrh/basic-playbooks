@@ -87,16 +87,6 @@
         owner: root
         group: root
         mode: 0644
-      
-    - name: Copy report file to report server
-      ansible.posix.synchronize:
-        src: '{{ _report }}'
-        dest: '{{ _report }}'
-      delegate_to: openshift-cnv-report
-      
-
-
-
 
   handlers:
     - name: Restart httpd
