@@ -97,7 +97,7 @@
       ansible.builtin.copy:
         src: /tmp/{{ _report }}
         dest: /tmp/
-      delegate_to: localhost
+      delegate_to: openshift-cnv-report
 
   handlers:
     - name: Restart httpd
