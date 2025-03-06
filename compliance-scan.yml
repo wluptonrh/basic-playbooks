@@ -88,16 +88,16 @@
         group: root
         mode: 0644
 
-    - name: Fetch report file
-      ansible.builtin.fetch:
-        src: '{{ _report }}'
-        dest: /tmp/
+    # - name: Fetch report file
+    #   ansible.builtin.fetch:
+    #     src: '{{ _report }}'
+    #     dest: /tmp/
 
-    - name: Copy file to report server
-      ansible.builtin.copy:
-        src: '{{ _report }}'
-        dest: /tmp/
-      delegate_to: openshift-cnv-report
+    # - name: Copy file to report server
+    #   ansible.builtin.copy:
+    #     src: '{{ _report }}'
+    #     dest: /tmp/
+    #   delegate_to: openshift-cnv-report
 
   handlers:
     - name: Restart httpd
