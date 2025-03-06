@@ -95,7 +95,7 @@
 
     - name: Copy file to report server
       ansible.builtin.copy:
-        src: /tmp/{{ _report }}
+        src: '{{ _report }}'
         dest: /tmp/
       delegate_to: openshift-cnv-report
 
