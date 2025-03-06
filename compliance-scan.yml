@@ -88,6 +88,17 @@
         group: root
         mode: 0644
 
+    - name: Fetch report file
+      ansible.builtin.fetch:
+        src: '{{ _report }}'
+        dest: /tmp/
+
+    - name: Copy file to report server
+      ansible.builtin.copy:
+        src: /tmp/{{ _report }}
+        dest: /tmp/
+      delegate_to: localhost
+
   handlers:
     - name: Restart httpd
       ansible.builtin.service:
