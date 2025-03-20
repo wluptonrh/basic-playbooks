@@ -1,0 +1,41 @@
+- name: Create Service and Route for our Apache Webserver
+  hosts: localhost
+
+  tasks:
+    - name: Create cockpit service
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: cockpit
+            namespace: openshift-cnv
+            labels:
+              purpose: demo
+          spec:
+            selector:
+              env: webapp
+            ports:
+              - protocol: TCP
+                port: 9090
+                targetPort: 9090
+
+    - name: Create webapp route
+      kubernetes.core.k8s:
+        state: present
+        definition: 
+          kind: Route
+          apiVersion: route.openshift.io/v1
+          metadata:
+            name: cockpit
+            namespace: openshift-cnv
+            labels:
+              purpose: demo
+          spec:
+            to:
+              kind: Service
+              name: cockpit
+            tls: null
+            port:
+              targetPort: 9090
