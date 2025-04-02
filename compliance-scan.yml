@@ -10,7 +10,7 @@
       - openscap-utils
       - scap-security-guide
     compliance_profile: ospp
-    use_httpd: false
+    use_httpd: true
 
   tasks:
   
