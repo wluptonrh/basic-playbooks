@@ -1,0 +1,42 @@
+
+- name: Create Service and Route for our Apache Webserver
+  hosts: localhost
+
+  tasks:
+    - name: Create service for compliance report
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: compliance
+            namespace: openshift-cnv
+            labels:
+              purpose: demo
+          spec:
+            selector:
+              env: webapp
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: 80
+
+    - name: Create route for compliance report
+      kubernetes.core.k8s:
+        state: present
+        definition: 
+          kind: Route
+          apiVersion: route.openshift.io/v1
+          metadata:
+            name: compliance
+            namespace: openshift-cnv
+            labels:
+              purpose: demo
+          spec:
+            to:
+              kind: Service
+              name: compliance
+            tls: null
+            port:
+              targetPort: 80
