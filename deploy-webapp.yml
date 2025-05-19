@@ -54,7 +54,8 @@
   
   - name: Download website template
     ansible.builtin.get_url:
-      url: https://www.free-css.com/assets/files/free-css-templates/download/page281/koppee.zip
+      #url: https://www.free-css.com/assets/files/free-css-templates/download/page281/koppee.zip
+      url: https://templatemo.com/download/templatemo_586_scholar
       dest: /var/www/html/web.zip
       # mode: 0644
   
@@ -67,7 +68,8 @@
   
   - name: Copy contents to html
     ansible.builtin.copy:
-      src: /var/www/html/coffee-shop-html-template/
+      #src: /var/www/html/coffee-shop-html-template/
+      src: /var/www/html/templatemo_586_scholar/
       dest: /var/www/html
       remote_src: true
       # mode: 0644
